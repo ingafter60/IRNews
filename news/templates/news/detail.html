@@ -1,0 +1,8 @@
+	<dl>
+		<dd>{{news.text}}</dd>
+		<dt>{{news.created_on}}
+			{%if news.via%}
+			<a href="{{news.via}}">/Read ...</a>
+			{%endif%}
+		</dt>
+	</dd>
