@@ -1,18 +1,19 @@
+{%extends "news/master.html"%}
 {% load humanize %}
-{% if news_list %}
+
+{%block content%}
+	{%if news_list%}
 	<dl>
-	{% for news in news_list %}
-		<dt>{{news.text}}</dt>
-		<dd>
-			<a href="{{news.id}}">{{news.created_on|naturaltime}}</a>
-		{% if news.via %}
-			<a href="{{news.via}}">/Read ...</a>
-		{% endif %}	
-	{% endfor %}	
+	{%for news in news_list %}
+	  <dt>{{news.text}}</dt>
+	  <dd>
+	  	<a href="{%url 'detail' pk=news.id%}">{{news.created_on|naturaltime}}</a>
+	  	{%if news.via%}
+	  	 <a href="{{news.via}}">/via</a>
+	  	{%endif%}
+	{%endfor%}
 	</dl>
-
-{% else %}
-
-	:-(
-
-{% endif %}		
+	{%else %}
+	No newss.
+	{%endif%}
+{%endblock%}
