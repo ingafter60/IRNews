@@ -22,3 +22,9 @@ class News(models.Model):
 class Like(models.Model):
 	news = models.ForeignKey(News, on_delete=models.CASCADE)
 
+
+class Profile(models.Model):
+	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	bio = models.TextField(blank=True)
+	blog = models.URLField(blank=True)
+
