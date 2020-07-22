@@ -7,7 +7,7 @@
 	{%for news in news_list %}
 	  <dt>{{news.text}}</dt>
 	  <dd>
-	  	<a href="{%url 'detail' pk=news.id%}">{{news.created_on|naturaltime}}</a>
+	  	<a href="{%url 'detail' pk=news.id%}">{{news.created_on|naturaltime}}</a> by @{{news.created_by}}
 	  	{%if news.via%}
 	  	 <a href="{{news.via}}">/via</a>
 	  	{%endif%}
@@ -17,3 +17,4 @@
 	No newss.
 	{%endif%}
 {%endblock%}
+

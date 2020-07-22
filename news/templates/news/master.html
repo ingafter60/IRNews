@@ -12,6 +12,7 @@
 	<nav>
 		<ul>
 		{% if user.is_authenticated %}
+			<li><a href="{% url 'myview' %}">My news</a></li>
 			<li><a href="{%url 'logout'%}?next=/">Logout</a></li>
 		{%else %}
 			<li><a href="/login/?next=/">Log in<a></li>
