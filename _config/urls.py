@@ -30,5 +30,7 @@ urlpatterns = [
     # url(r'^logout/$', auth_views.logout, name="logout"),
     url(r'^logout/$', LogoutView.as_view(), name="logout"),
     url(r'^my/$', views.MyView.as_view(), name="myview"),
+    url(r'^create/$', views.NewNewsView.as_view(), name="newnews"),
+    url(r'^(?P<pk>[0-9]+)/edit/$', views.EditNewsView.as_view(), name="editnews"),
 
 ]

@@ -32,4 +32,22 @@ class MyView(IndexView):
 
 	@method_decorator(login_required)
 	def dispatch(self, *args, **kwargs):
-		return super(MyView, self).dispatch(*args, **kwargs)			
+		return super(MyView, self).dispatch(*args, **kwargs)	
+
+class NewNewsView(generic.edit.CreateView):
+    model = News
+    fields = ['text', 'via']
+    success_url = "/my/"
+
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        return super(NewNewsView, self).form_valid(form)
+
+class EditNewsView(generic.edit.UpdateView):
+    model = News
+    fields = ['text', 'via']
+    success_url = "/my/"
+
+    def get_queryset(self):
+        base_qs = super(EditNewsView, self).get_queryset()
+        return base_qs.filter(created_by=self.request.user)    		

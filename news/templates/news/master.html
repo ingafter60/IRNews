@@ -15,6 +15,7 @@
 			<li>Logged in as: {{user}}. {{user.profile.bio}}
 				{%if user.profile.blog%}<a href="{{user.profile.blog}}">blog</a>{%endif%}
 			</li>
+			<li><a href="{%url 'newnews'%}">Share a blat</a></li>
 			<li><a href="{% url 'myview' %}">My news</a></li>
 			<li><a href="{%url 'logout'%}?next=/">Logout</a></li>
 		{%else %}
