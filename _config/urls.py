@@ -19,6 +19,10 @@ from django.urls import include, path
 # from django.contrib.auth import views as auth_views
 from django.contrib.auth.views import LoginView, LogoutView
 from news import views
+from django.conf import settings
+
+if settings.DEBUG:
+    import debug_toolbar
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,5 +36,5 @@ urlpatterns = [
     url(r'^my/$', views.MyView.as_view(), name="myview"),
     url(r'^create/$', views.NewNewsView.as_view(), name="newnews"),
     url(r'^(?P<pk>[0-9]+)/edit/$', views.EditNewsView.as_view(), name="editnews"),
-
-]
+    path('__debug__/', include(debug_toolbar.urls)),
+] 
